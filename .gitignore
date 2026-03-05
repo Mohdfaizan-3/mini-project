@@ -1,0 +1,27 @@
+# Dependencies
+**/node_modules
+
+# Environment variables (IMPORTANT - contains passwords/secrets)
+**/.env
+**/.env.local
+**/.env.production
+
+# Logs
+**/*.log
+**/logs
+
+# Build folders
+**/dist
+**/build
+
+# OS files
+.DS_Store        # Mac
+Thumbs.db        # Windows
+
+# Editor files
+.vscode/
+.idea/
+
+# Temporary files
+**/.cache
+**/tmp
