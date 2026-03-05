@@ -1,0 +1,273 @@
+/* ===== IMPORT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ===== RESET ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== VARIABLES ===== */
+:root {
+  --bg: #0f0f11;
+  --surface: #1a1a1f;
+  --surface-hover: #22222a;
+  --border: #2a2a35;
+  --accent: #e8ff47;
+  --accent-dim: #e8ff4720;
+  --text-primary: #f0f0f0;
+  --text-secondary: #888;
+  --text-muted: #555;
+  --danger: #ff4f4f;
+  --danger-dim: #ff4f4f18;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --transition: 0.2s ease;
+}
+
+/* ===== BASE ===== */
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  width: 90%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ===== HEADINGS ===== */
+h1 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+h1 span {
+  color: var(--accent);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ===== POSTS CONTAINER ===== */
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ===== SINGLE POST CARD ===== */
+.post {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: border-color var(--transition), background var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.post:hover {
+  border-color: #3a3a48;
+  background: var(--surface-hover);
+}
+
+/* ===== USERNAME ===== */
+.username {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== MESSAGE ===== */
+.message {
+  color: var(--text-secondary);
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+
+/* ===== LINKS ===== */
+a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* ===== NEW POST LINK ===== */
+.new-post-link {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.new-post-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--accent);
+  color: #0f0f11;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-sm);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.new-post-link a:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  color: #0f0f11;
+}
+
+/* ===== FORMS ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  width: 90%;
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+/* post card form (delete button) — override above */
+.post form {
+  width: 100%;
+  max-width: 100%;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: -0.5rem;
+}
+
+input[type="text"],
+textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  resize: vertical;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+textarea {
+  min-height: 120px;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 1.4rem;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+button:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* default submit button */
+form > button,
+form button[type="submit"] {
+  background: var(--accent);
+  color: #0f0f11;
+  align-self: flex-start;
+}
+
+/* delete button inside post card */
+.post form button {
+  background: var(--danger-dim);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+}
+
+.post form button:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  form {
+    padding: 1.25rem;
+  }
+
+  .post {
+    padding: 1.1rem;
+  }
+}
