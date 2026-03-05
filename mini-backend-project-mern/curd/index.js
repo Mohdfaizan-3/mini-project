@@ -37,8 +37,10 @@ app.get("/posts/new", (req, res) => {
 
 app.post("/posts", (req, res) => {
   const { username, message } = req.body;
-  const id = uuidv4();
-  posts.unshift({ id, username, message });
+  if (!username?.trim() || !message?.trim()) {
+    return res.status(400).send("Username and message are required");
+  }
+  posts.unshift({ id: uuidv4(), username, message });
   res.redirect("/posts");
 });
 
@@ -46,7 +48,7 @@ app.get("/posts/:id", (req, res) => {
   const { id } = req.params;
   const post = posts.find((post) => post.id === id);
   if (!post) {
-    return res.send("Post not found");
+    res.status(404).send("Post not found");
   }
   res.render("post.ejs", { post });
 });
@@ -54,6 +56,7 @@ app.get("/posts/:id", (req, res) => {
 app.get("/posts/:id/edit", (req, res) => {
   const { id } = req.params;
   const post = posts.find((post) => post.id === id);
+  if (!post) return res.status(404).send("Post not found");
   res.render("post-edit.ejs", { post });
 });
 
@@ -62,7 +65,7 @@ app.patch("/posts/:id", (req, res) => {
   const {message} = req.body;
   const post = posts.find((post) => String(post.id) === String(id));
   if (!post) {
-    return res.send("Post not found");
+    res.status(404).send("Post not found");
   }
   post.message = message;
 
@@ -76,5 +79,5 @@ app.delete("/posts/:id", (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log("server start");
+  console.log(`Server running on http://localhost:${port}`);
 });
